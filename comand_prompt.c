@@ -9,19 +9,19 @@
  */
 void shell(char **argv, char *envp[])
 {
-    ssize_t bytes_to_read;
-    size_t num_bytes = 0;
-    char *buffer;
+	ssize_t bytes_to_read;
+	size_t num_bytes = 0;
+	char *buffer;
 
-    while (1)
-      {
+	while (1)
+	{
 	if (isatty(0))
-	  write(STDOUT_FILENO, "$(╯°□°）╯ ", strlen("$(╯°□°）╯ "));
-	
-        bytes_to_read = getline(&buffer, &num_bytes, stdin);
+	write(STDOUT_FILENO, "$(╯°□°）╯ ", strlen("$(╯°□°）╯ "));
+
+	bytes_to_read = getline(&buffer, &num_bytes, stdin);
 	if (bytes_read == -1)
-	  {
-	    exit(-1);
-	  }
-    }
+	{
+		exit(-1);
+	}
+	}
 }
