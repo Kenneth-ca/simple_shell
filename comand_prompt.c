@@ -12,6 +12,9 @@ void shell(char **argv, char *envp[])
 	ssize_t bytes_to_read;
 	size_t num_bytes = 0;
 	char *buffer;
+    paths_t *p_path_string;
+
+	p_path_string = get_path(envp);
 
 	while (1)
 	{
@@ -19,7 +22,7 @@ void shell(char **argv, char *envp[])
 	write(STDOUT_FILENO, "$(╯°□°）╯ ", strlen("$(╯°□°）╯ "));
 	buffer = NULL;
 	bytes_to_read = getline(&buffer, &num_bytes, stdin);
-	if (bytes_read == -1)
+	if (bytes_to_read == -1)
 	{
 		exit(-1);
 	}
