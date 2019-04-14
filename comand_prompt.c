@@ -17,7 +17,7 @@ void shell(char **argv, char *envp[])
 	{
 	if (isatty(0))
 	write(STDOUT_FILENO, "$(╯°□°）╯ ", strlen("$(╯°□°）╯ "));
-
+	buffer = NULL;
 	bytes_to_read = getline(&buffer, &num_bytes, stdin);
 	if (bytes_read == -1)
 	{
