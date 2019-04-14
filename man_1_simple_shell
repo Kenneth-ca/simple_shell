@@ -1,4 +1,4 @@
-.TH SIMPLE_SHELL 1 "19 Mar 2019" "1.0" "Shell Juanito Man" 
+.TH SIMPLE_SHELL 1 "14 Apr 2019" "1.0" "Shell Juanito Man" 
 .SH NAME 
 .B Juanito 
 - Shell implementation of command interpreter, based en thompson shell
