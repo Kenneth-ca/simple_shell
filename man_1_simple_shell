@@ -1,0 +1,57 @@
+.TH SIMPLE_SHELL 1 "14 Apr 2019" "1.0" "Shell Juanito Man" 
+.SH NAME 
+.B Juanito 
+- Shell implementation of command interpreter, based en thompson shell
+.SH SYNOPSIS 
+#include "shell.h"
+
+.PP 
+.B command [- arguments]  
+.PP
+.B exit [ exit num ] 
+.PP 
+.B ls -l
+.PP 
+.B exit 78 
+
+.SH DESCRIPTION 
+juanito is a implementation of standard command interpreter for the system.  The current version of Juanito is 1.0.  This version has many features which make it appear similar
+in some respects to the thompson shell, but it is not a thompson shell clone.
+This man page is not intended to be a tutorial or a complete specification of the shell. 
+.PP
+.B Overview
+
+The shell is a command that reads lines from either a file or the terminal, interprets
+them, and generally executes other commands.
+
+.PP
+.B Invocation
+
+If no args are present and if the standard input of the shell is connected to a terminal the shell is considered an interactive shell
+An interactive shell generally prompts before each command and handles programming and command errors differently
+
+The environment variable ENV is set on entry to an interactive shell
+To exit of this shell you just need to put 
+.B exit
+
+.PP
+.B Command Exit Status
+
+Each command has an exit status that can influence the behaviour of other shell com-
+mands.  The paradigm is that a command exits with zero for normal or success, and non-
+zero for failure, error, or a false indication.
+
+.SH FORMAT 
+The format string is a character string, beginning and ending in its initial shift state, if any. The format string is composed of zero or more directives: ordinary characters (not %), which are copied unchanged to the output stream 
+
+.SH BUGS
+Please report any issue to the authors
+
+.SH AUTHORS
+
+Yesid Gonzalez <yesid.yag@gmail.com>
+Kenneth Cortes <kenneth.ca95@gmail.com>
+
+.SH SEE ALSO
+csh(1), echo(1), getopt(1), ksh(1), login(1), printf(1), test(1), getopt(3),
+passwd(5), environ(7), sysctl(8)
