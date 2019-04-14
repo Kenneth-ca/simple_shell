@@ -14,10 +14,14 @@ void shell(char **argv, char *envp[])
     char *buffer;
 
     while (1)
-    {
-        if (isatty(0))
-            write(STDOUT_FILENO, "$(╯°□°）╯ ", strlen("$(╯°□°）╯ "));
-
+      {
+	if (isatty(0))
+	  write(STDOUT_FILENO, "$(╯°□°）╯ ", strlen("$(╯°□°）╯ "));
+	
         bytes_to_read = getline(&buffer, &num_bytes, stdin);
+	if (bytes_read == -1)
+	  {
+	    exit(-1);
+	  }
     }
 }
