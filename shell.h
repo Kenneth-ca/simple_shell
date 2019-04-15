@@ -22,7 +22,7 @@ paths_t *create_struct(paths_t **head, char *str);
 void parse_text_path(char *str, char **parsed);
 void func_exit(char *buffer, char **parsed, paths_t *p_path_string);
 void free_lists(paths_t *head);
-char *_strdup(char *str)
+char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
 int _atoi(char *s);
 
