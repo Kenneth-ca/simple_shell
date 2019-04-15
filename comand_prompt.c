@@ -1,7 +1,5 @@
 #include "shell.h"
 
-int exit_num = 0;
-
 /**
  * sighandler - Funtion to change the CTRL+C behavior
  * @sig_num: unused parameter
@@ -47,7 +45,7 @@ void shell(char **argv, char *envp[])
 				free_list(p_path_string);
 			if (parsed_args)
 				free(parsed_args);
-			exit(exit_num);
+			exit(0);
 		}
 		if (buffer[0] != '\n' && buffer[0])
 		{
@@ -61,8 +59,6 @@ void shell(char **argv, char *envp[])
 	}
 	free(buffer);
 	if (p_path_string)
-	{
 		free_list(p_path_string);
-		free(p_path_string);
-	}
+
 }
