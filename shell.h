@@ -27,5 +27,6 @@ int _strcmp(char *s1, char *s2);
 int _atoi(char *s);
 int _strlen(char *s);
 void check_path(char **parsed, paths_t *h);
+char *_strcpy(char *dest, char *src);
 
 #endif
