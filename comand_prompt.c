@@ -8,7 +8,6 @@
 void sighandler(int sig_num)
 {
 	(void)sig_num;
-	write(STDOUT_FILENO, "$ ", _strlen("$ "));
 	fflush(stdout);
 }
 
@@ -31,8 +30,6 @@ void shell(char **argv, char *envp[])
 	signal(SIGINT, sighandler);
 	while (1)
 	{
-		if (isatty(0))
-		write(STDOUT_FILENO, "$ ", _strlen("$ "));
 		buffer = NULL;
 		parsed_args = (char **)malloc(sizeof(char *) * 1024);
 		parsed_args[1] = NULL;
