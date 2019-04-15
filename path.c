@@ -41,7 +41,7 @@ paths_t *create_struct(paths_t **head, char *str)
 
     if (!new_node)
         return (NULL);
-    new_node->path = strdup(str);
+    new_node->path = _strdup(str);
     if (!new_node->path)
     {
         free(new_node);
