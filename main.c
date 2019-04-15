@@ -12,7 +12,6 @@
 int main(int argc, char *argv[], char *envp[])
 {
 	(void)argc;
-	(void)argv;
 	shell(argv, envp);
 
 	return (0);
