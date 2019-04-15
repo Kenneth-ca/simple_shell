@@ -20,5 +20,7 @@ void shell(char **argv, char *envp[]);
 paths_t *get_path(char **env);
 paths_t *create_struct(paths_t **head, char *str);
 void parse_text_path(char *str, char **parsed);
+char *_strdup(char *str);
+int _strcmp(char *s1, char *s2);
 
 #endif
