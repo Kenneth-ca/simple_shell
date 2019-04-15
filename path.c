@@ -1,6 +1,5 @@
 #include "shell.h"
 
-
 /**
  * parse_text_path - parse the input path
  * @str: string of the path
@@ -8,24 +7,23 @@
  *
  * Return: void
  */
-
 void parse_text_path(char *str, char **parsed)
 {
-    const char delimiters[] = "=:;";
-    char *dest = NULL;
-    int i;
+	const char delimiters[] = "=:;";
+	char *dest = NULL;
+	int i;
 
-    dest = strtok(str, delimiters);
-    i = 0;
-    while (dest)
-    {
-        parsed[i] = dest;
-        dest = strtok(NULL, delimiters);
-        i++;
-    }
-    parsed[i] = NULL;
-    if (dest)
-        free(dest);
+	dest = strtok(str, delimiters);
+	i = 0;
+	while (dest)
+	{
+		parsed[i] = dest;
+		dest = strtok(NULL, delimiters);
+		i++;
+	}
+	parsed[i] = NULL;
+	if (dest)
+		free(dest);
 }
 
 /**
@@ -37,20 +35,20 @@ void parse_text_path(char *str, char **parsed)
  */
 paths_t *create_struct(paths_t **head, char *str)
 {
-    paths_t *new_node = (paths_t *)malloc(sizeof(paths_t));
+	paths_t *new_node = (paths_t *)malloc(sizeof(paths_t));
 
-    if (!new_node)
-        return (NULL);
-    new_node->path = _strdup(str);
-    if (!new_node->path)
-    {
-        free(new_node);
-        return (NULL);
-    }
-    new_node->next = *head;
-    *head = new_node;
+	if (!new_node)
+		return (NULL);
+	new_node->path = _strdup(str);
+if (!new_node->path)
+{
+free(new_node);
+return (NULL);
+}
+	new_node->next = *head;
+	*head = new_node;
 
-    return (new_node);
+	return (new_node);
 }
 
 
@@ -78,7 +76,7 @@ paths_t *get_path(char **env)
 			if (juanito[i][j] == comparation[j] && j < 4)
 			{
 				count++;
-                /*check for a coincidence whit the path */
+				/*check for a coincidence whit the path */
 				if (count == 4 && j == 3)
 					num = i;
 			}
@@ -89,18 +87,17 @@ paths_t *get_path(char **env)
 		i++;
 	}
 	tmp = juanito[num];
-    tmp2 = malloc(sizeof(char *) * 1024);
-    /*send the coincidence to another function for tokens*/
-    parse_text_path(tmp, tmp2);
-    head = NULL;
-
-    i = 0;
-    while (tmp2[i])
-    {
-        create_struct(&head, tmp2[i]);
-        i++;
-    }
-    if (tmp2)
-        free(tmp2);
-    return (head);
+	tmp2 = malloc(sizeof(char *) * 1024);
+	/*send the coincidence to another function for tokens*/
+	parse_text_path(tmp, tmp2);
+	head = NULL;
+	i = 0;
+while (tmp2[i])
+{
+create_struct(&head, tmp2[i]);
+i++;
+}
+	if (tmp2)
+		free(tmp2);
+	return (head);
 }
