@@ -19,6 +19,7 @@ typedef struct path_s
 void shell(char **argv, char *envp[]);
 paths_t *get_path(char **env);
 paths_t *create_struct(paths_t **head, char *str);
+void parse_text(char *str, char **parsed)
 void parse_text_path(char *str, char **parsed);
 void func_exit(char *buffer, char **parsed, paths_t *p_path_string);
 void free_lists(paths_t *head);
