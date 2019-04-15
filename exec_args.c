@@ -11,11 +11,9 @@
 void exec_args(char **argv, char **parsed, char **env, paths_t *p_path_string)
 {
 	int process, status = 0;
-	char *parse = NULL;
 	pid_t pid;
 
-	parse = parsed[0];
-	parse = check_path(parse, p_path_string);
+	check_path(parsed, p_path_string);
 
 	pid = fork();
 	if (pid == -1)
@@ -25,7 +23,7 @@ void exec_args(char **argv, char **parsed, char **env, paths_t *p_path_string)
 	}
 	else if (pid == 0)
 	{
-	process = execve(parse, parsed, env);
+	process = execve(parsed[0], parsed, env);
 		if (process < 0)
 		{
 			write(STDERR_FILENO, argv[0], _strlen(argv[0]));

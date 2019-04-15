@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * _strcmp - compare two strings
+ * _strcmp - show a table whit 9 multiplication
  * @s1: string1
  * @s2: string2
  *
