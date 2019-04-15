@@ -9,6 +9,12 @@
 #include <sys/stat.h>
 #include <signal.h>
 
+/**
+ * struct path_s - singly linked list for path
+ * @path: information of each part of the path
+ * @next: pointer to the next node
+ *
+ */
 typedef struct path_s
 {
 	char *path;
@@ -19,13 +25,13 @@ typedef struct path_s
 void shell(char **argv, char *envp[]);
 paths_t *get_path(char **env);
 paths_t *create_struct(paths_t **head, char *str);
-void parse_text(char *str, char **parsed)
+void parse_text(char *str, char **parsed);
 void parse_text_path(char *str, char **parsed);
 void func_exit(char *buffer, char **parsed, paths_t *p_path_string);
 void free_lists(paths_t *head);
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
-char *_strcat(char *dest, char *src)
+char *_strcat(char *dest, char *src);
 int _atoi(char *s);
 int _strlen(char *s);
 void check_path(char **parsed, paths_t *h);
