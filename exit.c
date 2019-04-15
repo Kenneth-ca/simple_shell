@@ -9,6 +9,7 @@
  */
 void func_exit(char *buffer, char **parsed, paths_t *p_path_string)
 {
+	int exit_num = 0;
 	if (_strcmp(parsed[0], "exit") == 0)
 	{
 		if (parsed[1])

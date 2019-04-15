@@ -21,29 +21,26 @@ void exec_args(char **argv, char **parsed, char **env, paths_t *p_path_string)
 	if (pid == -1)
 	{
 		perror("Fork failed");
-		exit_num = 1;
 		_exit(1);
 	}
 	else if (pid == 0)
 	{
 	process = execve(parse, parsed, env);
-	if (process < 0)
-	{
-		write(STDERR_FILENO, argv[0], _strlen(argv[0]));
-		write(STDERR_FILENO, ": ", 2);
-		write(STDERR_FILENO, "1", 1);
-		write(STDERR_FILENO, ": ", 2);
-		write(STDERR_FILENO, parsed[0], _strlen(parsed[0]));
-		write(STDERR_FILENO, ": not found\n", 13);
-		exit_num = 127;
-		exit(127);
+		if (process < 0)
+		{
+			write(STDERR_FILENO, argv[0], _strlen(argv[0]));
+			write(STDERR_FILENO, ": ", 2);
+			write(STDERR_FILENO, "1", 1);
+			write(STDERR_FILENO, ": ", 2);
+			write(STDERR_FILENO, parsed[0], _strlen(parsed[0]));
+			write(STDERR_FILENO, ": not found\n", 13);
+			exit(127);
 		}
 		exit(0);
 	}
 	else
 	{
-		exit_num = 0;
 		wait(&status);
 		/*free(parse);*/
 	}
-
+}

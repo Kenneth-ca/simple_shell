@@ -62,7 +62,7 @@ paths_t *create_struct(paths_t **head, char *str)
  */
 paths_t *get_path(char **env)
 {
-	int i = 0, j = 0, num, count;;
+	int i = 0, j = 0, num, count;
 	char **juanito;
 	char *tmp, **tmp2 = NULL;
 	paths_t *head;

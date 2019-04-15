@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * free_lists - Function that frees lists
+ * free_list - Function that frees lists
  * @head: a pointer to a linked list
  *
  */
-void free_lists(paths_t *head)
+void free_list(paths_t *head)
 {
 	paths_t *tmp;
 
@@ -16,4 +16,15 @@ void free_lists(paths_t *head)
 		free(head);
 		head = tmp;
 	}
+}
+
+/**
+ * free_parsed - A function that frees arguments
+ * @parsed: the arguments to be free
+ *
+ */
+void free_parsed(char **parsed)
+{
+	if (parsed)
+		free(parsed);
 }
