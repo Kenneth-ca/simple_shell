@@ -10,6 +10,7 @@
  */
 void exec_args(char **argv, char **parsed, char **env, paths_t *p_path_string)
 {
+	int exec_number = 0;
 	int process, status = 0;
 	char *parse = NULL;
 	pid_t pid;
