@@ -22,8 +22,7 @@ void parse_text_path(char *str, char **parsed)
 		i++;
 	}
 	parsed[i] = NULL;
-	if (dest)
-		free(dest);
+	free(dest);
 }
 
 /**
@@ -69,9 +68,8 @@ paths_t *get_path(char **env)
 	juanito = env;
 	while (juanito[i] != NULL)
 	{
-		j = 0;
 		count = 0;
-		while (juanito[i][j])
+		for (j = 0; juanito[i][j]; j++)
 		{
 			if (juanito[i][j] == comparation[j] && j < 4)
 			{
@@ -82,21 +80,19 @@ paths_t *get_path(char **env)
 			}
 			else
 				count = 0;
-			j++;
 		}
-		i++; }
-	tmp = juanito[num];
+		i++;
+	}
+	tmp = _strdup(juanito[num]);
 	tmp2 = malloc(sizeof(char *) * 1024);
-	if (tmp2)
+	if (!tmp2)
 		return (NULL);
 	/*send the coincidence to another function for tokens*/
 	parse_text_path(tmp, tmp2);
 	head = NULL;
-	i = 0;
-	while (tmp2[i])
-	{
+	for (i = 0; tmp2[i]; i++)
 		create_struct(&head, tmp2[i]);
-		i++; }
+	free(tmp);
 	free(tmp2);
 	return (head);
 }

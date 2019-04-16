@@ -33,7 +33,7 @@ void shell(char **argv, char *envp[])
 		if (isatty(0))
 			write(STDOUT_FILENO, "$ ", _strlen("$ "));
 		buffer = malloc(sizeof(char) * nbytes);
-		if (buffer)
+		if (!buffer)
 			return;
 		if (getline(&buffer, &nbytes, stdin) != EOF)
 		{
