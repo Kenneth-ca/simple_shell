@@ -7,37 +7,36 @@
  *
  * Return: number acci code
  */
-void check_path(char **parsed, paths_t *h)
+char *check_path(char **parsed, paths_t *h)
 {
 	char *tmp = NULL;
 	char *tmp2 = NULL;
 	char *juanito = NULL;
-	struct stat *buf;
+	struct stat buf;
+	char *slash = "/";
+	char *var;
 
-	buf = malloc(sizeof(struct stat));
-	if (buf == NULL)
-		return;
+	var = parsed[0];
+	tmp = str_concat(slash, var);
 	if (!h)
-		return;
+		return (NULL);
 	while (h)
 	{
 		if (h->path)
 		{
 			juanito = _strdup(h->path);
-			tmp = _strdup(_strcat(juanito, "/"));
-			tmp2 = _strdup(_strcat(tmp, parsed[0]));
-			if (stat(tmp2, buf) == 0)
+			tmp2 = (str_concat(juanito, tmp));
+			if (stat(tmp2, &buf) == 0)
 			{
-				parsed[0] = tmp2;
-				break;
+				free(juanito);
+				free(tmp);
+				return (tmp2);
 			}
 			h = h->next;
 		}
-	}
-	if (buf)
-		free(buf);
-	if (tmp)
-		free(tmp);
-	if (juanito)
+		free(tmp2);
 		free(juanito);
+	}
+	free(tmp);
+	return (parsed[0]);
 }

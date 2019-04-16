@@ -24,7 +24,7 @@ typedef struct path_s
 } paths_t;
 
 void shell(char **argv, char *envp[]);
-void exec_args(char **argv, char **parsed, char **env, paths_t *p_path_string);
+void exec_args(char *buffer, char **argv, char **parsed, char **env, paths_t *p_path_string);
 paths_t *get_path(char **env);
 paths_t *create_struct(paths_t **head, char *str);
 void parse_text(char *str, char **parsed);
@@ -32,12 +32,14 @@ void parse_text_path(char *str, char **parsed);
 void func_exit(char *buffer, char **parsed, paths_t *p_path_string);
 void free_list(paths_t *head);
 void free_parsed(char **parsed);
-char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
+char *_strdup(char *str);
 char *_strcat(char *dest, char *src);
+char *_strcpy(char *dest, char *src);
 int _atoi(char *s);
 int _strlen(char *s);
-void check_path(char **parsed, paths_t *h);
-char *_strcpy(char *dest, char *src);
+char *check_path(char **parsed, paths_t *h);
+void call_func(char *, char **, char **, char **, paths_t *);
+char *str_concat(char *s1, char *s2);
 
 #endif

@@ -65,7 +65,7 @@ paths_t *get_path(char **env)
 	char *tmp, **tmp2 = NULL;
 	paths_t *head;
 	char *comparation = "PATH";
-/*in this part, iterate inside the environment */
+	/*in this part, iterate inside the environment */
 	juanito = env;
 	while (juanito[i] != NULL)
 	{
@@ -92,11 +92,11 @@ paths_t *get_path(char **env)
 	parse_text_path(tmp, tmp2);
 	head = NULL;
 	i = 0;
-while (tmp2[i])
-{
-create_struct(&head, tmp2[i]);
-i++;
-}
+	while (tmp2[i])
+	{
+		create_struct(&head, tmp2[i]);
+		i++;
+	}
 	if (tmp2)
 		free(tmp2);
 	return (head);
