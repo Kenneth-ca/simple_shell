@@ -8,7 +8,7 @@
 void sighandler(int sig_num)
 {
 	(void)sig_num;
-	write(STDOUT_FILENO, "$(╯°□°）╯ ", _strlen("$(╯°□°）╯ "));
+	write(STDOUT_FILENO, "\n$ ", _strlen("\n$ "));
 	fflush(stdout);
 }
 
@@ -31,8 +31,10 @@ void shell(char **argv, char *envp[])
 	while (1)
 	{
 		if (isatty(0))
-			write(STDOUT_FILENO, "$(╯°□°）╯ ", _strlen("$(╯°□°）╯ "));
+			write(STDOUT_FILENO, "$ ", _strlen("$ "));
 		buffer = malloc(sizeof(char) * nbytes);
+		if (buffer)
+			return;
 		if (getline(&buffer, &nbytes, stdin) != EOF)
 		{
 			if (buffer[0] != '\n' && buffer[0])
