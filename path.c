@@ -59,14 +59,15 @@ return (NULL);
  */
 paths_t *get_path(char **env)
 {
+	(void) env;
 	int i = 0, j = 0, num, count;
 	char **juanito;
 	char *tmp, **tmp2 = NULL;
 	paths_t *head;
 	char *comparation = "PATH";
 /*in this part, iterate inside the environment */
-	juanito = env;
-	while (juanito[i] != NULL)
+	juanito = environ;
+	for (i = 0; juanito[i] != NULL; i++)
 	{
 		count = 0;
 		for (j = 0; juanito[i][j]; j++)

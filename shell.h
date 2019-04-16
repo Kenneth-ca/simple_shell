@@ -42,4 +42,6 @@ char *check_path(char **parsed, paths_t *h);
 void call_func(char *, char **, char **, char **, paths_t *);
 char *str_concat(char *s1, char *s2);
 
+extern char** environ;
+
 #endif
