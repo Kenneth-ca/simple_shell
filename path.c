@@ -85,7 +85,7 @@ paths_t *get_path(char **env)
 			j++;
 		}
 		i++; }
-	tmp = _strdup(juanito[num]);
+	tmp = juanito[num];
 	tmp2 = malloc(sizeof(char *) * 1024);
 	if (tmp2)
 		return (NULL);
@@ -97,7 +97,6 @@ paths_t *get_path(char **env)
 	{
 		create_struct(&head, tmp2[i]);
 		i++; }
-	free(tmp);
 	free(tmp2);
 	return (head);
 }
