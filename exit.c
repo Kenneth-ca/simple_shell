@@ -18,19 +18,13 @@ void func_exit(char *buffer, char **parsed, paths_t *p_path_string)
 			exit_num = _atoi(parsed[1]);
 			if (exit_num)
 			{
-				free(parsed);
-				if (buffer)
-					free(buffer);
-				if (p_path_string)
-					free_list(p_path_string);
-				exit(exit_num);
+				free(buffer);
+				free_list(p_path_string);
+				_exit(exit_num);
 			}
 		}
-		if (buffer)
-			free(buffer);
-		if (p_path_string)
-			free_list(p_path_string);
-		free(parsed);
-		exit(exit_num);
+		free(buffer);
+		free_list(p_path_string);
+		_exit(0);
 	}
 }

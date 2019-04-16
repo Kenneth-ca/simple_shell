@@ -8,6 +8,7 @@
 void sighandler(int sig_num)
 {
 	(void)sig_num;
+	write(STDOUT_FILENO, "$(╯°□°）╯ ", _strlen("$(╯°□°）╯ "));
 	fflush(stdout);
 }
 
@@ -20,9 +21,8 @@ void sighandler(int sig_num)
  */
 void shell(char **argv, char *envp[])
 {
-	ssize_t bytes_to_read;
-	size_t num_bytes = 0;
-	char **parsed_args;
+	char *parsed_args[1024];
+	size_t nbytes = 32;
 	char *buffer;
 	paths_t *p_path_string;
 
@@ -30,32 +30,27 @@ void shell(char **argv, char *envp[])
 	signal(SIGINT, sighandler);
 	while (1)
 	{
-		buffer = NULL;
-		parsed_args = (char **)malloc(sizeof(char *) * 1024);
-		parsed_args[1] = NULL;
-		bytes_to_read = getline(&buffer, &num_bytes, stdin);
-		if (bytes_to_read == -1)
+		if (isatty(0))
+			write(STDOUT_FILENO, "$(╯°□°）╯ ", _strlen("$(╯°□°）╯ "));
+		buffer = malloc(sizeof(char) * nbytes);
+		if (getline(&buffer, &nbytes, stdin) != EOF)
 		{
-			if (buffer)
+			if (buffer[0] != '\n' && buffer[0])
+			{
+				parse_text(buffer, parsed_args);
+				call_func(buffer, argv, parsed_args, envp, p_path_string);
+			}
+			else
+			{
 				free(buffer);
-			if (p_path_string)
-				free_list(p_path_string);
-			if (parsed_args)
-				free(parsed_args);
-			exit(0);
+				continue;
+			}
 		}
-		if (buffer[0] != '\n' && buffer[0])
+		else
 		{
-			parse_text(buffer, parsed_args);
-			func_exit(buffer, parsed_args, p_path_string);
-			exec_args(argv, parsed_args, envp, p_path_string);
+			free_list(p_path_string);
+			free(buffer);
+			break;
 		}
-		if (parsed_args)
-			free_parsed(parsed_args);
-		free(buffer);
 	}
-	free(buffer);
-	if (p_path_string)
-		free_list(p_path_string);
-
 }
