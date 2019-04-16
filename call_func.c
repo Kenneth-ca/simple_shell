@@ -1,8 +1,12 @@
 #include "shell.h"
 
 /**
- *
- *
+ * call_func - A function that will redirect to the right function
+ * @buff: the buffer
+ * @argv: argument from main
+ * @pars: command requested from user
+ * @path: the path
+ * @env: the enviroment
  *
  */
 
