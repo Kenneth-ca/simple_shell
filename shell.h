@@ -24,7 +24,7 @@ typedef struct path_s
 } paths_t;
 
 void shell(char **argv, char *envp[]);
-void exec_args(char *buffer, char **argv, char **parsed, char **env, paths_t *p_path_string);
+void exec_args(char *, char **, char **, char **, paths_t *);
 paths_t *get_path(char **env);
 paths_t *create_struct(paths_t **head, char *str);
 void parse_text(char *str, char **parsed);
