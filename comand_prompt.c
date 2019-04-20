@@ -40,7 +40,10 @@ void shell(char **argv, char *envp[])
 			if (buffer[0] != '\n' && buffer[0])
 			{
 				parse_text(buffer, parsed_args);
-				call_func(buffer, argv, parsed_args, envp, p_path_string);
+				if (parsed_args[0])
+					call_func(buffer, argv, parsed_args, envp, p_path_string);
+				else
+					free(buffer);
 			}
 			else
 			{
